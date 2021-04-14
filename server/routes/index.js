@@ -7,4 +7,5 @@ module.exports = (app) => {
 
   app.post('/api/people', peopleController.create);
   app.get('/api/people', peopleController.list)
+  app.delete('/api/people/:personId', peopleController.destroy)
 };

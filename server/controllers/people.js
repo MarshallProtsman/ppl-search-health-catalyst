@@ -17,4 +17,20 @@ module.exports = {
       .then((people) => res.status(200).send(people))
       .catch((error) => res.status(400).send(error));
   },
+  destroy(req, res) {
+    return Person
+    .findByPk(req.params.personId)
+      .then(person => {
+        if (!person) {
+          return res.status(400).send({
+            message: `There is no entry with an ID of ${req.params.personId}`,
+          });
+        }
+        return person
+          .destroy()
+          .then(() => res.status(200).send({ message: `Deleted record with the ID of ${req.params.personId}` }))
+          .catch((error) => res.status(400).send(error));
+      })
+      .catch((error) => res.status(400).send(error));
+  }
 };
