@@ -3,3 +3,4 @@ mysql-server/
 .env
 /server/config/
 .DS_Store
+mysql-server/
